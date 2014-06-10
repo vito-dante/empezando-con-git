@@ -53,34 +53,45 @@ class MonteCarlo(object):
 		inventario=self.inventario_inicial
 		vb=self.en_el_viaje
 		resultado=0
+		res=0
+		#print (i+1,inventario,op[0],op[1])
+		print("  Orden de las columnas ")
+		print("Iteracion--Inventario--Nro Demanda--Demanda")
 		for i in range (0,nro_iteracion):
 			op=self.Motos_vendidas()
-			print (inventario,op[0],op[1])
+			print (i+1,inventario,op[0],op[1])
 			#aqui poner un if para que no salgan negativos
-			resultado=inventario-op[1]	
+			resultado=inventario-op[1]
+			#res=resultado+res	
 			if resultado>=0:
 				inventario=inventario-op[1]	
 			#Es hora de pedir?
 			if inventario<=self.Punto_de_pedido:
-				print (inventario,op[0],op[1])
 				#ya hay un pedido en camino?
 				if vb==self.entrega_ya:
-					po=self.Tiempo_llegada()
-					vb=po[1]
+					#solo funciona una vez por defecto es 1==0
 					if self.interruptor==0:
-						inventario=inventario+self.Cantidad_por_pedido	
-					self.interruptor=0
-				#tiempo
-				vb=vb-self.semana_transcurrida
-				#if inventario<0:
-				#	self.perdida_por_el_viaje=self.perdida_por_el_viaje+inventario
-					
+						inventario=inventario+self.Cantidad_por_pedido
+						print("entrega del pedido , ahora tiene %i"%inventario)
+						self.interruptor=1
+				if inventario<=self.Punto_de_pedido:
+					if vb==self.entrega_ya:
+						po=self.Tiempo_llegada()
+						vb=po[1]
+						print("va a ser pedido por que tiene %i"%inventario)
+						print ("Demorara alrededor de %i semanas"%vb)
+						print ("------------------------------------")
+						self.interruptor=0
+					#tiempo
+					vb=vb-self.semana_transcurrida
 
-			#ya se cumplio el tiempo?
-			#if vb==bv:
-				
-		#print(self.perdida_por_el_viaje)	
-			
 	
 k=MonteCarlo()
-k.Iteracion(20)
+k.Iteracion(15)
+
+
+
+
+
+
+
