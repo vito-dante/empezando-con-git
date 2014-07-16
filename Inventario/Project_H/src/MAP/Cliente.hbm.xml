@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 15, 2014 10:25:33 AM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="MAP.Cliente" table="cliente" catalog="inventario_uap">
+        <id name="ciC" type="string">
+            <column name="CI_C" length="40" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombreC" type="string">
+            <column name="NOMBRE_C" length="140" />
+        </property>
+        <property name="apellidoC" type="string">
+            <column name="APELLIDO_C" length="140" />
+        </property>
+        <property name="telefonoC" type="string">
+            <column name="TELEFONO_C" length="140" />
+        </property>
+        <property name="direccionC" type="string">
+            <column name="DIRECCION_C" length="140" />
+        </property>
+        <set name="salidaProductos" table="salida_producto" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="CI_C" length="40" not-null="true" />
+            </key>
+            <one-to-many class="MAP.SalidaProducto" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 15, 2014 10:25:33 AM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="MAP.Inventario" table="inventario" catalog="inventario_uap">
+        <id name="idInventario" type="java.lang.Integer">
+            <column name="ID_INVENTARIO" />
+            <generator class="identity" />
+        </id>
+        <property name="cantidadStock" type="java.lang.Integer">
+            <column name="CANTIDAD_STOCK" />
+        </property>
+        <property name="fechaInv" type="date">
+            <column name="FECHA_INV" length="10" />
+        </property>
+        <set name="productos" table="producto" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_INVENTARIO" not-null="true" />
+            </key>
+            <one-to-many class="MAP.Producto" />
+        </set>
+    </class>
+</hibernate-mapping>

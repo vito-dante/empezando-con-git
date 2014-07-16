@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/inventario_uap?zeroDateTimeBehavior=convertToNull</property>
+    <property name="hibernate.connection.username">root</property>
+    <property name="hibernate.connection.password">vito</property>
+    <mapping resource="MAP/Funcionario.hbm.xml"/>
+    <mapping resource="MAP/RolCargo.hbm.xml"/>
+    <mapping resource="MAP/Estado.hbm.xml"/>
+    <mapping resource="MAP/Cliente.hbm.xml"/>
+    <mapping resource="MAP/Inventario.hbm.xml"/>
+    <mapping resource="MAP/Categoria.hbm.xml"/>
+    <mapping resource="MAP/Usuario.hbm.xml"/>
+    <mapping resource="MAP/Producto.hbm.xml"/>
+    <mapping resource="MAP/SalidaProducto.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>

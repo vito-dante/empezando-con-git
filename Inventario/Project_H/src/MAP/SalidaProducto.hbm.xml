@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 15, 2014 10:25:33 AM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="MAP.SalidaProducto" table="salida_producto" catalog="inventario_uap">
+        <id name="idSalida" type="java.lang.Integer">
+            <column name="ID_SALIDA" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="producto" class="MAP.Producto" fetch="select">
+            <column name="COD_PROD" length="40" not-null="true" />
+        </many-to-one>
+        <many-to-one name="funcionario" class="MAP.Funcionario" fetch="select">
+            <column name="CI_F" length="40" not-null="true" />
+        </many-to-one>
+        <many-to-one name="cliente" class="MAP.Cliente" fetch="select">
+            <column name="CI_C" length="40" not-null="true" />
+        </many-to-one>
+        <property name="cantidad" type="java.lang.Integer">
+            <column name="CANTIDAD" />
+        </property>
+        <property name="fecha" type="timestamp">
+            <column name="FECHA" length="19" />
+        </property>
+    </class>
+</hibernate-mapping>

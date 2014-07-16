@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 15, 2014 10:25:33 AM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="MAP.Categoria" table="categoria" catalog="inventario_uap">
+        <id name="idCategoria" type="java.lang.Integer">
+            <column name="ID_CATEGORIA" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="estado" class="MAP.Estado" fetch="select">
+            <column name="ID_ESTADO" not-null="true" />
+        </many-to-one>
+        <property name="categoria" type="string">
+            <column name="CATEGORIA" length="30" />
+        </property>
+        <property name="detalleCategoria" type="string">
+            <column name="DETALLE_CATEGORIA" length="140" />
+        </property>
+        <set name="productos" table="producto" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_CATEGORIA" not-null="true" />
+            </key>
+            <one-to-many class="MAP.Producto" />
+        </set>
+    </class>
+</hibernate-mapping>
