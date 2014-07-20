@@ -1,3 +1,5 @@
+//Para contar el numero de tablas que tienes en tu BD sirve para postgres y mysql
+
 SELECT Count(*) FROM information_schema.tables
 select count(*) from information_schema.tables where table_schema = 'information_schema';
 
