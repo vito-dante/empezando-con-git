@@ -5,6 +5,9 @@ select count(*) from information_schema.tables where table_schema = 'information
 
 SELECT tablename FROM pg_tables WHERE schemaname = 'public'
 SELECT count(*) FROM pg_tables WHERE schemaname = 'public'
+
+Para importar a postgresql //probado en postgresql for windows
 \i /path/to/yourfile.sql
+
 
 SELECT COUNT(*) FROM information_schema.tables WHERE table_schema='YOUR_DB_NAME_HERE'
